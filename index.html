@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بورتفوليو مونتاج</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap">
+<style>
+:root{--bg:#EEF0F4;--surface:#FFFFFF;--ink:#14213D;--muted:#5A6479;--line:#CDD3DE;--accent:#3A4BFF;--accent-ink:#FFFFFF;--play:#FFB800;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10131C;--surface:#1A1F2D;--ink:#EEF0F6;--muted:#A3ACC0;--line:#2E3547;--accent:#7A86FF;--accent-ink:#10131C;--play:#FFC933}}
+:root[data-theme="dark"]{--bg:#10131C;--surface:#1A1F2D;--ink:#EEF0F6;--muted:#A3ACC0;--line:#2E3547;--accent:#7A86FF;--accent-ink:#10131C;--play:#FFC933}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif;line-height:1.8;font-size:17px}
+h1,h2,h3{font-family:"Readex Pro","IBM Plex Sans Arabic",Tahoma,Arial,sans-serif;line-height:1.3;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+/* hero: timeline */
+.hero{padding:56px 0 40px}
+.ruler{position:relative;height:34px;border-bottom:2px solid var(--ink);margin-bottom:34px;
+background:repeating-linear-gradient(to left,var(--ink) 0 1px,transparent 1px 24px) bottom/100% 10px no-repeat,
+repeating-linear-gradient(to left,var(--ink) 0 2px,transparent 2px 120px) bottom/100% 20px no-repeat}
+.ruler span{position:absolute;top:0;font-size:12px;color:var(--muted);font-family:Consolas,monospace;direction:ltr}
+.playhead{position:absolute;top:-8px;bottom:-14px;width:2px;background:var(--play);inset-inline-start:62%}
+.playhead::before{content:"";position:absolute;top:0;left:-7px;border:8px solid transparent;border-top:12px solid var(--play);border-bottom:0}
+.hero h1{font-size:clamp(40px,8vw,84px);font-weight:700;letter-spacing:-.01em}
+.hero .role{font-family:"Readex Pro",Tahoma,sans-serif;font-size:clamp(18px,3vw,26px);color:var(--accent);margin:8px 0 18px;font-weight:600}
+.hero p.bio{max-width:58ch;color:var(--muted);margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:500;border:2px solid var(--ink);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+section{padding:48px 0}
+h2{font-size:clamp(26px,4vw,36px);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:2px;background:var(--line)}
+/* reel */
+.reel{position:relative;display:block;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:var(--ink);text-decoration:none;color:#fff;border:2px solid var(--ink)}
+.reel .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#14213D,#2B3A8C)}
+.play{width:76px;height:76px;border-radius:50%;background:var(--play);display:grid;place-items:center}
+.play::after{content:"";border:14px solid transparent;border-inline-start:22px solid #14213D;border-inline-end:0;margin-inline-start:-4px}
+.reel strong{font-family:"Readex Pro",sans-serif;font-size:20px}
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{aspect-ratio:16/9;display:flex;align-items:flex-end;justify-content:space-between;padding:10px 14px;color:#fff;font-family:Consolas,monospace;font-size:13px;direction:ltr;position:relative}
+.thumb::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to right,rgba(255,255,255,.14) 0 10px,transparent 10px 20px) top/100% 6px no-repeat}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:19px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:13px;padding:2px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.card a.watch{margin-top:auto;padding-top:6px;color:var(--accent);font-weight:500;text-decoration:none}
+.card a.watch:hover{text-decoration:underline}
+/* services & tools */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.svc{padding:18px 20px;border-inline-start:4px solid var(--accent);background:var(--surface);border-radius:8px}
+.svc h3{font-size:18px;margin-bottom:4px}
+.svc p{margin:0;color:var(--muted);font-size:15px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tools span{padding:6px 16px;border:2px solid var(--ink);border-radius:8px;font-family:"Readex Pro",sans-serif;font-size:15px}
+/* contact */
+.contact{background:var(--ink);color:var(--bg);border-radius:18px;padding:40px 28px;text-align:center;margin-bottom:40px}
+.contact h2{justify-content:center;color:var(--bg)}
+.contact h2::after{display:none}
+.contact p{margin:0 auto 22px;max-width:46ch;opacity:.85}
+.contact .btns{justify-content:center}
+.contact .btn{border-color:var(--bg);color:var(--bg)}
+.contact .btn.primary{background:var(--play);border-color:var(--play);color:#14213D}
+footer{text-align:center;color:var(--muted);font-size:14px;padding:0 0 32px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="ruler" aria-hidden="true"><span style="inset-inline-start:0">00:00</span><span style="inset-inline-start:33%">00:30</span><span style="inset-inline-start:66%">01:00</span><div class="playhead"></div></div>
+    <h1 id="name"></h1>
+    <div class="role" id="role"></div>
+    <p class="bio" id="bio"></p>
+    <div class="btns" id="heroBtns"></div>
+  </header>
+
+  <section id="reel"><h2>الريل</h2><div id="reelBox"></div></section>
+  <section id="work"><h2>أعمالي</h2><div class="grid" id="projects"></div></section>
+  <section id="services"><h2>الخدمات</h2><div class="services" id="svcList"></div><div class="tools" id="tools"></div></section>
+
+  <section class="contact" id="contact">
+    <h2>خلينا نشتغل سوا</h2>
+    <p id="contactText"></p>
+    <div class="btns" id="contactBtns"></div>
+  </section>
+  <footer id="foot"></footer>
+</main>
+
+<script>
+/* ============ عدّل بياناتك من هنا فقط ============ */
+const DATA = {
+  name: "Hussein Adly",
+  role: "مونتير فيديو",
+  bio: "مونتير فيديو بخبرة سنتين. بحوّل اللقطات الخام لفيديوهات بإيقاع قوي وقصة واضحة، وبشتغل على Adobe Premiere وAfter Effects وAudition وCapCut.",
+  reelUrl: "https://youtube.com/",          // رابط الريل (يوتيوب أو فيميو)
+  reelTitle: "شاهد الريل (60 ثانية)",
+  projects: [
+    { title: "إعلان براند ملابس", type: "إعلان", role: "مونتاج + تصحيح ألوان", tools: ["Premiere","CapCut"], desc: "إعلان 30 ثانية للسوشيال ميديا بإيقاع سريع.", url: "https://youtube.com/", time: "00:30", c1: "#3A4BFF", c2: "#14213D" },
+    { title: "ريلز مطعم", type: "سوشيال ميديا", role: "مونتاج + موشن جرافيك", tools: ["Premiere","After Effects"], desc: "سلسلة ريلز زودت التفاعل على صفحة المطعم.", url: "https://youtube.com/", time: "00:45", c1: "#E4572E", c2: "#3B1F2B" },
+    { title: "بودكاست حلقة كاملة", type: "بودكاست", role: "مونتاج + تنقية صوت", tools: ["Premiere","Audition"], desc: "مونتاج كاميرتين مع تنظيف الصوت.", url: "https://youtube.com/", time: "42:10", c1: "#0F9D8A", c2: "#102A43" },
+    { title: "فيديو سينمائي قصير", type: "سينمائي", role: "مونتاج + تصحيح ألوان", tools: ["Premiere","After Effects"], desc: "مونتاج سينمائي مع تدريج لوني مخصص.", url: "https://youtube.com/", time: "02:15", c1: "#7B2CBF", c2: "#10002B" }
+  ],
+  services: [
+    { t: "مونتاج", d: "مونتاج احترافي يناسب أي استايل." },
+    { t: "ريلز", d: "ريلز مميزة تناسب كل منصة." },
+    { t: "موشن جرافيك", d: "عناوين وانتقالات ورسوم متحركة." },
+    { t: "ساوند", d: "تنقية صوت وميكس بسيط." }
+  ],
+  tools: ["Adobe Premiere Pro","After Effects","Adobe Audition","CapCut"],
+  contactText: "عندك مشروع؟ ابعتلي تفاصيله وهرد عليك في أقرب وقت.",
+  contacts: [
+    { label: "واتساب", url: "https://wa.me/201147757968", primary: true },
+    { label: "إيميل", url: "mailto:husseinadly66@gmail.com" },
+    { label: "إنستجرام", url: "https://www.instagram.com/7ussein3dly" },
+    { label: "لينكدإن", url: "https://www.linkedin.com/in/hussein-adly-446bb9182" }
+  ]
+};
+/* ================================================ */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const link = (l, cls) => `<a class="btn ${cls||""}" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`;
+
+document.title = DATA.name + " | " + DATA.role;
+$("name").textContent = DATA.name;
+$("role").textContent = DATA.role;
+$("bio").textContent = DATA.bio;
+$("heroBtns").innerHTML = `<a class="btn primary" href="#work">شاهد أعمالي</a><a class="btn" href="#contact">تواصل معايا</a>`;
+$("reelBox").innerHTML = `<a class="reel" href="${esc(DATA.reelUrl)}" target="_blank" rel="noopener"><div class="inner"><div class="play"></div><strong>${esc(DATA.reelTitle)}</strong></div></a>`;
+$("projects").innerHTML = DATA.projects.map(p => `
+  <article class="card">
+    <div class="thumb" style="background:linear-gradient(135deg,${esc(p.c1)},${esc(p.c2)})"><span>${esc(p.time||"")}</span><span>${esc(p.type)}</span></div>
+    <div class="body">
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.desc)}</p>
+      <p><strong>دوري:</strong> ${esc(p.role)}</p>
+      <div class="tags">${(p.tools||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <a class="watch" href="${esc(p.url)}" target="_blank" rel="noopener">شاهد الفيديو</a>
+    </div>
+  </article>`).join("");
+$("svcList").innerHTML = DATA.services.map(s => `<div class="svc"><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div>`).join("");
+$("tools").innerHTML = DATA.tools.map(t => `<span>${esc(t)}</span>`).join("");
+$("contactText").textContent = DATA.contactText;
+$("contactBtns").innerHTML = DATA.contacts.map(c => link(c, c.primary ? "primary" : "")).join("");
+$("foot").textContent = "© " + new Date().getFullYear() + " " + DATA.name;
+</script>
+</body>
+</html>
